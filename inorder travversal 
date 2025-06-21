@@ -1,0 +1,9 @@
+def order(root,ans):
+            if(root==None):
+                return 
+            order(root.left,ans) 
+            ans.append(root.val)
+            order(root.right,ans)
+         ans = [] 
+         order(root,ans)
+         return ans 
