@@ -1,0 +1,14 @@
+ def generate(ind,ans,curr,nums):
+            if (ind==len(nums)):
+                ans.append(curr)
+                return
+            curr.append(nums[ind])
+            generate (ind+1,ans ,curr,nums)
+            curr.pop()
+            genearte (ind+1 ,ans,curr)
+            ind=0
+            ans=[]
+            curr=[]
+            generate(ind,ans,curr,nums)
+            return ans
+        
