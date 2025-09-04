@@ -1,0 +1,9 @@
+n=int(input())
+t=int(input())
+ans=1
+s=n-1
+p=t-1
+for i in range(p):
+    ans=ans*(s-i)
+    ans=ans//(i+1)
+print(ans)
