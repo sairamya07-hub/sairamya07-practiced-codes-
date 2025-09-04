@@ -1,0 +1,8 @@
+# we need take 0 based indexing not 1 based indexing 
+row= int(input())
+ans=1
+print(ans,end=" ")
+for i in range(1,row):
+    ans=ans*row-i
+    ans=ans//i
+    print(ans,end=" ")
