@@ -1,0 +1,11 @@
+from collections import defaultdict
+strs=["eat","ate","tan","ant","bat"]
+d= defaultdict(list)
+for word in strs :
+    s_word="".join(sorted(word))
+    d[s_word].append(word)
+res=[]
+for key in sorted(d):
+    res.append(d[key])
+
+print(res)
