@@ -1,0 +1,37 @@
+
+from typing import List
+from collections import deque 
+def getAlienLanguage(dictionary, k) :
+    # Write your code here.
+    #ord (char)-ord('a') number ki convert iythadhii 
+    adj=[]
+    for _ in range((k)):
+        adj.append([])
+    n=len(dictionary)
+    inDegre=[0]*k
+    for ind in range(0,n-1):
+        w1=dictionary[ind]
+        w2=dictionary[ind+1]
+        for i in range(0,min(len(w1),len(w2))):
+            if(w1[i]!=w2[i]):
+                inDegre[ord(w2[i])-ord('a')]+=1
+                adj[ord(w1[i])-ord('a')].append(ord(w2[i])-ord('a'))
+                break
+    q=deque([])
+    for i in range(0,k):
+        if (inDegre[i]==0):
+            q.append(i)
+    ans=[]
+    while(len(q)>0):
+        node=q.popleft()
+        ans.append(node)
+        for adjNode in adj[node]:
+            inDegre[adjNode]-=1
+            if(inDegre[adjNode]==0):
+                q.append(adjNode)
+    result=[]
+    for num in ans:
+        result.append(chr(ord('a')+num))
+    return result 
+
+    
