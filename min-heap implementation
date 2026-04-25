@@ -1,0 +1,54 @@
+class minHeap:
+
+    def __init__(self):
+        self.arr = []
+        self.cnt = 0
+
+    def heapifyUp(self, arr, ind):
+        if ind > 0:
+            parent = (ind - 1) // 2
+            if arr[ind] < arr[parent]:
+                arr[ind], arr[parent] = arr[parent], arr[ind]
+                self.heapifyUp(arr, parent)
+
+    def heapifyDown(self, arr, ind):
+        smallest = ind
+        lchild = 2 * ind + 1
+        rchild = 2 * ind + 2
+
+        if lchild < self.cnt and arr[lchild] < arr[smallest]:
+            smallest = lchild
+
+        if rchild < self.cnt and arr[rchild] < arr[smallest]:
+            smallest = rchild
+
+        if smallest != ind:
+            arr[smallest], arr[ind] = arr[ind], arr[smallest]
+            self.heapifyDown(arr, smallest)
+
+    # Insert
+    def push(self, x: int):
+        self.arr.append(x)
+        self.heapifyUp(self.arr, self.cnt)
+        self.cnt += 1
+
+    # Remove min
+    def pop(self):
+        if self.cnt == 0:
+            return -1
+
+        self.arr[0], self.arr[self.cnt - 1] = self.arr[self.cnt - 1], self.arr[0]
+        val = self.arr.pop()
+        self.cnt -= 1
+        self.heapifyDown(self.arr, 0)
+        return val
+
+    # Get min
+    def peek(self) -> int:
+        if self.cnt == 0:
+            return -1
+        return self.arr[0]
+
+    # Size
+    def size(self) -> int:
+        return self.cnt
