@@ -1,0 +1,13 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        st=str(n)
+        seen=set()
+        while(int(st)>1):
+            if st in seen:
+                return False
+            seen.add(st)
+            ans=0
+            for i in st:
+                ans+=(int(i)*int(i))
+            st=str(ans)
+        return st=="1"
