@@ -1,0 +1,10 @@
+class Solution:
+    def reverseStr(self, s: str, k: int) -> str:
+
+        mid = 2 * k
+        res = ""
+        for i in range(0, len(s), mid):
+            first = s[i:i+k]
+            second = s[i+k:i+mid]
+            res += first[::-1] + second
+        return res
